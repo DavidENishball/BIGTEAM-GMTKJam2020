@@ -14,8 +14,8 @@ public class GridMovementComponent : MonoBehaviour
     {
         if (IsDirectionOccupied(Direction))
         {
-            OnMoveCompleted.Invoke(this, EMoveResult.FAILURE);
-            return EMoveResult.FAILURE;
+			DoBounceMove(Direction);
+			return EMoveResult.FAILURE;
         }
         else
         {
@@ -30,7 +30,20 @@ public class GridMovementComponent : MonoBehaviour
         this.transform.DOMove(Movepoint, MoveTime).SetEase(Ease.OutExpo).OnComplete(InvokeMoveCompleted);
     }
 
-    public bool IsDirectionOccupied(Vector2 Direction)
+	public void DoBounceMove(Vector2 Direction)
+	{
+		Sequence bounceSequence = DOTween.Sequence();
+
+		Vector2 Movepoint1 = new Vector2(transform.position.x, transform.position.y) + (Direction/4f);
+		Vector2 Movepoint2 = new Vector2(transform.position.x, transform.position.y);
+
+		bounceSequence.Append(transform.DOMove(Movepoint1, MoveTime/2f).SetEase(Ease.OutExpo));
+		bounceSequence.Append(transform.DOMove(Movepoint2, MoveTime/2f).SetEase(Ease.OutExpo).OnComplete(InvokeMoveFailed));
+
+		bounceSequence.Play();
+	}
+
+	public bool IsDirectionOccupied(Vector2 Direction)
     {
         Vector3 Movepoint = transform.position + new Vector3(Direction.x, Direction.y);
 
@@ -47,9 +60,13 @@ public class GridMovementComponent : MonoBehaviour
     {
         OnMoveCompleted.Invoke(this, EMoveResult.SUCCESS);
     }
+	protected void InvokeMoveFailed()
+	{
+		OnMoveCompleted.Invoke(this, EMoveResult.FAILURE);
+	}
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
         
     }

@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 3794748451849003646}
   - component: {fileID: 3794748451849003647}
   - component: {fileID: 3794748451849003632}
+  - component: {fileID: 1740826031}
+  - component: {fileID: 1740826032}
+  - component: {fileID: 1740826033}
+  - component: {fileID: 1740826034}
   m_Layer: 0
   m_Name: SpritePlayer
   m_TagString: Untagged
@@ -106,3 +110,59 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1740826031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794748451849003633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e34b58fb91292140ab562ba257c4b7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveTime: 0.12
+--- !u!114 &1740826032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794748451849003633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff44477b6c3ac044bdfc8e3b19a3b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeroControl: {fileID: 1740826033}
+--- !u!114 &1740826033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794748451849003633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8747b0d5f408d4ab85284e8f70c68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementComponent: {fileID: 1740826031}
+  CombatComponent: {fileID: 1740826034}
+  MoveQueue: 
+--- !u!114 &1740826034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794748451849003633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfab844b2152f9242bf60d0a401aa04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveTime: 0.3
+  SlashEffectPrefab: {fileID: 7240643342168443618, guid: 5654e4f23c6c4624a9d7e18f9c905264,
+    type: 3}

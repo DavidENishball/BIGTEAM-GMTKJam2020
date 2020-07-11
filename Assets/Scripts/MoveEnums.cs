@@ -4,22 +4,22 @@ using UnityEngine;
 
 public enum EPlayerMoves
 {
-    WAIT,
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT,
-    NORTHWEST,
-    SOUTHWEST,
-    SOUTHEAST,
-    NORTHEAST,
-    SWORD,
-    SHEATHE,
-    CANCEL,
-    ERROR,
+    WAIT = 0,
+    UP = 1,
+    DOWN = 2,
+    LEFT = 3,
+    RIGHT = 4,
+    NORTHWEST = 5,
+    SOUTHWEST = 6,
+    SOUTHEAST = 7,
+    NORTHEAST = 8,
+    SWORD = 9,
+    SHEATHE = 10,
+    CANCEL = 11,
+    ERROR = 12,
 
     //
-    NONE
+    NONE = 99
 }
 public enum EMoveResult
 {
@@ -28,4 +28,13 @@ public enum EMoveResult
     FAILURE,
     DAMAGE,
     SYSTEM_ERROR
+}
+
+public enum ECombatResult
+{
+	SUCCESS,
+	NEUTRAL,
+	FAILURE,
+	DAMAGE,
+	SYSTEM_ERROR
 }

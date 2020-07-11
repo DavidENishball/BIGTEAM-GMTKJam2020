@@ -12,7 +12,9 @@ public class State_ExecutingMoves : IState
     {
         Debug.Log("Entering State_ExecutingMoves");
         runningCoroutine = owner.StartCoroutine(ExecutionPhase());
-        // TODO: play end animation.
+		// TODO: play end animation.
+
+		owner.Hero.NotifyPlayQueue();
     }
 
 
@@ -54,6 +56,6 @@ public class State_ExecutingMoves : IState
     {
         owner.StopCoroutine(runningCoroutine);
         runningCoroutine = null;
-        owner.Hero.MoveQueue.Clear();
+		owner.Hero.ClearQueue();
     }
 }

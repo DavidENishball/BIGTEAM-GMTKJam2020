@@ -6,23 +6,60 @@ public class HeroControlScript : MonoBehaviour
 {
 
     public delegate void HeroControlScriptDelegate(HeroControlScript source);
-    public delegate void HeroControlScriptMoveResultDelegate(HeroControlScript source, EPlayerMoves chosenMove, EMoveResult result);
+	public delegate void HeroControlScriptAddActionDelegate(HeroControlScript source, EPlayerMoves InputMove);
+	public delegate void HeroControlScriptMoveResultDelegate(HeroControlScript source, EPlayerMoves chosenMove, EMoveResult result);
 
     public HeroControlScriptMoveResultDelegate OnMoveCompleted;
-
+	public HeroControlScriptAddActionDelegate OnActionQueued;
+	public HeroControlScriptDelegate OnRemoveLastQueued;
     public HeroControlScriptDelegate OnMoveQueueUpdated;
+	public HeroControlScriptDelegate OnQueueCleared;
+	public HeroControlScriptDelegate OnActionQueuePlay;
 
-    protected EPlayerMoves MoveInProgress = EPlayerMoves.NONE;
+
+	private SpriteRenderer m_heroRenderer;
+	public SpriteRenderer HeroRenderer
+	{
+		get
+		{
+			if (!m_heroRenderer)
+				m_heroRenderer = GetComponent<SpriteRenderer>();
+
+			return m_heroRenderer;
+		}
+	}
+
+	private SpriteRenderer m_slashRenderer;
+	public SpriteRenderer SlashRenderer
+	{
+		get
+		{
+			if (!m_slashRenderer)
+				m_slashRenderer = GetComponent<SpriteRenderer>();
+
+			return m_slashRenderer;
+		}
+	}
+
+	protected Vector2 LastDirection = new Vector2(1, 0);
+
+	protected EPlayerMoves MoveInProgress = EPlayerMoves.NONE;
 
     public GridMovementComponent MovementComponent;
+	public GridCombatComponent CombatComponent;
 
-     private void Awake()
+
+	private void Awake()
     {
         if (MovementComponent == null)
         {
             MovementComponent = gameObject.GetComponent<GridMovementComponent>();
         }
-    }
+		if (CombatComponent == null)
+		{
+			CombatComponent = gameObject.GetComponent<GridCombatComponent>();
+		}
+	}
     public List<EPlayerMoves> MoveQueue = new List<EPlayerMoves>();
 
 
@@ -55,22 +92,28 @@ public class HeroControlScript : MonoBehaviour
         {
             case EPlayerMoves.UP:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
-                MovementComponent.AttemptMovement(new Vector2(0, 1));
+				LastDirection = new Vector2(0, 1);
+				MovementComponent.AttemptMovement(LastDirection);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.RIGHT:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
-                MovementComponent.AttemptMovement(new Vector2(1, 0));
+				HeroRenderer.flipX = false;
+				LastDirection = new Vector2(1, 0);
+				MovementComponent.AttemptMovement(LastDirection);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.LEFT:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
-                MovementComponent.AttemptMovement(new Vector2(-1, 0));
+				HeroRenderer.flipX = true;
+				LastDirection = new Vector2(-1, 0);
+				MovementComponent.AttemptMovement(LastDirection);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.DOWN:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
-                MovementComponent.AttemptMovement(new Vector2(0, -1));
+				LastDirection = new Vector2(0, -1);
+                MovementComponent.AttemptMovement(LastDirection);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.WAIT:
@@ -79,8 +122,8 @@ public class HeroControlScript : MonoBehaviour
                 return EMoveResult.NEUTRAL;
                 break;
             case EPlayerMoves.SWORD:
-                MoveInProgress = EPlayerMoves.NONE;
-                OnMoveCompleted.Invoke(this, EPlayerMoves.SWORD, EMoveResult.NEUTRAL);
+				CombatComponent.OnCombatCompleted += HandleCombatComponentDone;
+				CombatComponent.AttemptCombat(LastDirection, HeroRenderer.flipX);
                 return EMoveResult.NEUTRAL;
                 break;
             case EPlayerMoves.SHEATHE:
@@ -102,7 +145,8 @@ public class HeroControlScript : MonoBehaviour
     {
         MoveQueue.Add(NewMove);
         Debug.Log("added move to queue " + NewMove.ToString());
-        if (OnMoveQueueUpdated != null) OnMoveQueueUpdated.Invoke(this);
+		if (OnActionQueued != null) OnActionQueued.Invoke(this, NewMove);
+		if (OnMoveQueueUpdated != null) OnMoveQueueUpdated.Invoke(this);
     }
 
     public void RemoveLastQueuedMove()
@@ -112,7 +156,8 @@ public class HeroControlScript : MonoBehaviour
             MoveQueue.RemoveAt(MoveQueue.Count - 1);
             Debug.Log("Removing last queued move.  new count is " + MoveQueue.Count.ToString());
         }
-        if (OnMoveQueueUpdated != null) OnMoveQueueUpdated.Invoke(this);
+		if (OnRemoveLastQueued != null) OnRemoveLastQueued.Invoke(this);
+		if (OnMoveQueueUpdated != null) OnMoveQueueUpdated.Invoke(this);
     }
 
 
@@ -123,4 +168,27 @@ public class HeroControlScript : MonoBehaviour
         MoveInProgress = EPlayerMoves.NONE;
         OnMoveCompleted.Invoke(this, MoveInProgress, result);
     }
+
+	public void HandleCombatComponentDone(GridCombatComponent source, ECombatResult result)
+	{
+		source.OnCombatCompleted -= HandleCombatComponentDone;
+		EPlayerMoves finishedMove = MoveInProgress;
+		MoveInProgress = EPlayerMoves.NONE;
+
+		//messy match im sorry, theyre 1-1 like i really dont know my dude
+		EMoveResult res = (EMoveResult)(int)result;
+
+		OnMoveCompleted.Invoke(this, MoveInProgress, res);
+	}
+
+	public void ClearQueue()
+	{
+		MoveQueue.Clear();
+		if (OnQueueCleared != null) OnQueueCleared.Invoke(this);
+	}
+
+	public void NotifyPlayQueue()
+	{
+		if (OnActionQueuePlay != null) OnActionQueuePlay.Invoke(this);
+	}
 }

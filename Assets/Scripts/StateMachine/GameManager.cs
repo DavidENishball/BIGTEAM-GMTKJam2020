@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public HeroControlScript Hero;
+	public ActionBar ActionUI;
 
     public StateMachine stateMachine = new StateMachine();
 
@@ -17,8 +18,15 @@ public class GameManager : MonoBehaviour
         {
             Hero = FindObjectOfType<HeroControlScript>();
         }
+		if (ActionUI == null)
+		{
+			ActionUI = FindObjectOfType<ActionBar>();
+		}
 
-        stateMachine.ChangeState(new State_PlanPlayerMoves(this));
+		ActionUI.Init(Hero);
+
+
+		stateMachine.ChangeState(new State_PlanPlayerMoves(this));
     }
 
 
