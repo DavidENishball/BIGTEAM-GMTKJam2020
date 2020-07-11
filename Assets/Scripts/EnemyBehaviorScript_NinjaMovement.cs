@@ -27,7 +27,7 @@ public class EnemyBehaviorScript_NinjaMovement : EnemyBehaviorScript
         if (BattleTargetComponent.IsStunned)
         {
             BattleTargetComponent.RemoveStun();
-            // Play Un-stun effects?
+            // AXE Play Un-stun effects?
             yield return new WaitForSeconds(0.2f);
             yield break;
         }

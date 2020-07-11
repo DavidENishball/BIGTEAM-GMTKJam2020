@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public float PlanningTimeForPlayer = 4.0f;
     public bool UseTimer = true;
 
+    public int MaximumSizeOfPlayerInputQueue = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
         if (Hero == null)
         {
             Hero = FindObjectOfType<HeroControlScript>();
+            Hero.MaximumQueuedMoves = MaximumSizeOfPlayerInputQueue;
         }
 		if (ActionUI == null)
 		{

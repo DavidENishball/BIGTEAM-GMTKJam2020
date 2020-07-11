@@ -20,6 +20,8 @@ public class HeroControlScript : MonoBehaviour
 
     public BattleTarget BattleTargetComponent;
 
+    public int MaximumQueuedMoves = 10;
+
 
 	public SpriteRenderer HeroRenderer
 	{
@@ -148,10 +150,17 @@ public class HeroControlScript : MonoBehaviour
 
     public void AddMoveToQueue(EPlayerMoves NewMove)
     {
-        MoveQueue.Add(NewMove);
-        Debug.Log("added move to queue " + NewMove.ToString());
-		if (OnActionQueued != null) OnActionQueued.Invoke(this, NewMove);
-		if (OnMoveQueueUpdated != null) OnMoveQueueUpdated.Invoke(this);
+        if (MoveQueue.Count < MaximumQueuedMoves)
+        {
+            MoveQueue.Add(NewMove);
+            Debug.Log("added move to queue " + NewMove.ToString());
+            if (OnActionQueued != null) OnActionQueued.Invoke(this, NewMove);
+            if (OnMoveQueueUpdated != null) OnMoveQueueUpdated.Invoke(this);
+        }
+        else
+        {
+            Debug.Log("maximum queued moves");
+        }
     }
 
     public void RemoveLastQueuedMove()
