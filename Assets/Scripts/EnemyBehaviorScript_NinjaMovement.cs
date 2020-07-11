@@ -22,6 +22,17 @@ public class EnemyBehaviorScript_NinjaMovement : EnemyBehaviorScript
             GridCombat = GetComponent<GridCombatComponent>();
         }
 
+
+        // Do nothing if stunned.
+        if (BattleTargetComponent.IsStunned)
+        {
+            BattleTargetComponent.RemoveStun();
+            // Play Un-stun effects?
+            yield return new WaitForSeconds(0.2f);
+            yield break;
+        }
+
+
         ECombatResult Combat = GridCombat.AttemptCombat(BattleTargetComponent.CurrentFacing, true);
         yield return new WaitForSeconds(GridCombat.MoveTime);
         if (Combat == ECombatResult.SUCCESS)

@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class BattleTarget : MonoBehaviour
 {
+    public delegate void BattleTargetDelegate(BattleTarget Source);
+    public delegate void BattleTargetWithOtherDelegate(BattleTarget Source, BattleTarget Other);
+
+    public BattleTargetWithOtherDelegate OnTakeDamage;
+    public BattleTargetWithOtherDelegate OnKilled;
+    public BattleTargetWithOtherDelegate OnStunned;
+    public BattleTargetDelegate OnNotStunned;
+
+
+    public bool IsStunned;
+
     public enum EBattleTeam
     {
         HERO,
@@ -36,9 +47,26 @@ public class BattleTarget : MonoBehaviour
         
     }
 
+    public virtual void TakeStun(BattleTarget Source = null)
+    {
+        IsStunned = true;
+        if (OnStunned != null) OnStunned.Invoke(this, Source);
+    }
+
+    public virtual void RemoveStun()
+    {
+        if (IsStunned)
+        {
+            IsStunned = false;
+            if (OnNotStunned != null) OnNotStunned.Invoke(this);
+        }
+    }
+
+
     public virtual void TakeHit(BattleTarget Source = null)
     {
         HitsUntilDeath -= 1;
+        if (OnTakeDamage != null) OnTakeDamage.Invoke(this, Source);
         if (HitsUntilDeath <= 0)
         {
             Kill(Source);
@@ -58,14 +86,18 @@ public class BattleTarget : MonoBehaviour
         // Make this script as disabled.
         this.enabled = false;
 
+        if (OnKilled != null) OnKilled.Invoke(this, KillSource);
+
         // Play effects and stuff here.
         // Temp effect
 
         Instantiate(TempDeathEffectPrefab, this.transform.position - Vector3.forward * 2, transform.rotation);
 
-       
-        // For now, just destroy.
+        
+
+        // For now, just destroy.  AXE CHANGE THIS
         Destroy(gameObject);
+
          
     }
 }
