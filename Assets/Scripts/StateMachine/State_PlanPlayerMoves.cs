@@ -6,11 +6,19 @@ public class State_PlanPlayerMoves : IState
 {
     GameManager owner;
     Coroutine runningCoroutine;
+
+    public float TimeRemaining = 999.0f;
+    public bool IsTimeLimited = true;
     public State_PlanPlayerMoves(GameManager owner) { this.owner = owner; }
 
     public void Enter()
     {
         Debug.Log("Entering State_PlanPlayerMoves");
+        IsTimeLimited = owner.UseTimer;
+        if (IsTimeLimited)
+        {
+            TimeRemaining = owner.PlanningTimeForPlayer;
+        }
     }
 
 
@@ -49,6 +57,16 @@ public class State_PlanPlayerMoves : IState
         {
             owner.Hero.RemoveLastQueuedMove();
         }
+
+        if (IsTimeLimited)
+        {
+            TimeRemaining -= Time.deltaTime;
+            if (TimeRemaining <= 0)
+            {
+                owner.stateMachine.ChangeState(new State_ExecutingMoves(owner));
+            }
+        }
+
     }
 
     public void Exit()

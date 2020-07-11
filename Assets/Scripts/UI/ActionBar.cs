@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActionBar : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class ActionBar : MonoBehaviour
 	public GameObject QueueItemPrefab;
 
 	public RectTransform QueuePanel, LeftBracket, RightBracket;
+
+    public Text CountdownText;
+
+    public GameManager manager;
 
 	public int CurrentAction = 0;
 
