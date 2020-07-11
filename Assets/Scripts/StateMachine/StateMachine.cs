@@ -17,18 +17,9 @@ public class StateMachine
 
     public void Update()
     {
-        if (currentState != null) currentState.Execute();
+        if (currentState != null) currentState.Update();
     }
 
-
-    public bool HandleMessage(Component Source, string Verb, int Data)
-    {
-        if (currentState != null)
-        {
-            return currentState.HandleMessage(Source, Verb, Data);
-        }
-        return false;
-    }
 
     public IState GetState()
     {

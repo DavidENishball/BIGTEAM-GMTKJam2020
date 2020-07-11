@@ -5,14 +5,22 @@ using UnityEngine;
 // A class for controlling game state.
 public class GameManager : MonoBehaviour
 {
+    public HeroControlScript Hero;
 
-    StateMachine stateMachine;
+    public StateMachine stateMachine = new StateMachine();
 
     // Start is called before the first frame update
     void Start()
     {
     // TODO: menu mode, game over, fighting, etc.        
+        if (Hero == null)
+        {
+            Hero = FindObjectOfType<HeroControlScript>();
+        }
+
+        stateMachine.ChangeState(new State_ExecutingMoves(this));
     }
+
 
     // Update is called once per frame
     void Update()

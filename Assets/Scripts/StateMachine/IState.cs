@@ -5,8 +5,7 @@ using UnityEngine;
 public interface IState
 {
     void Enter();
-    void Execute();
+    void Update();
     void Exit();
 
-    bool HandleMessage(Component Source, string Verb, int Data);
 }

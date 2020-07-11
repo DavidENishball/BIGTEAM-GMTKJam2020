@@ -81,6 +81,9 @@ public class HeroControlScript : MonoBehaviour
         return EMoveResult.NEUTRAL;
     }
 
+
+
+
     public void HandleMovementComponentDone(GridMovementComponent source, EMoveResult result)
     {
         source.OnMoveCompleted -= HandleMovementComponentDone;
