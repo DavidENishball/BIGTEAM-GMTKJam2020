@@ -38,7 +38,7 @@ public class EnemyBehaviorScript_NinjaMovement : EnemyBehaviorScript
         }
 
         // Let's turn around.
-        BattleTargetComponent.CurrentFacing *= 1;
+        BattleTargetComponent.CurrentFacing *= -1;
 
         // Done
     }
