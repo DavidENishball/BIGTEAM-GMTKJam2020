@@ -1858,7 +1858,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3794748452599246567}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1562119695
+--- !u!114 &1562119701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2123,6 +2123,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bf6e74d0404fbd4d9c0e61d15d890f2, type: 3}
+--- !u!1 &4344580486513690211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7539656702762966163, guid: ae2a5563e0424034da7f49e806913e9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6118475702999866096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4344580486513690212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4344580486513690211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6c4f8423e42dc489fce6a828be714f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  BattleTargetComponent: {fileID: 0}
+  GridMovement: {fileID: 0}
+  GridCombat: {fileID: 0}
+--- !u!114 &4344580486513690213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4344580486513690211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfab844b2152f9242bf60d0a401aa04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BattleTargetComponent: {fileID: 6766341216737634585}
+  MoveTime: 0.3
+  SlashEffectPrefab: {fileID: 7240643342168443618, guid: 5654e4f23c6c4624a9d7e18f9c905264,
+    type: 3}
+--- !u!114 &4344580486513690214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4344580486513690211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e34b58fb91292140ab562ba257c4b7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveTime: 0.1
+  DustEffectPrefab: {fileID: 7482501132005440168, guid: 7c8fc8b8a344d8940a58465b9c13de06,
+    type: 3}
 --- !u!1001 &6118475702999866096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2192,6 +2245,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae2a5563e0424034da7f49e806913e9c, type: 3}
+--- !u!114 &6766341216737634585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 653002432599651305, guid: ae2a5563e0424034da7f49e806913e9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6118475702999866096}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4344580486513690211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4aa4b00adf5f945b66340c7788191a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7038514424340754899
 PrefabInstance:
   m_ObjectHideFlags: 0

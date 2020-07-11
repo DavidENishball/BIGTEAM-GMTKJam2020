@@ -98,11 +98,11 @@ public class GridCombatComponent : MonoBehaviour
 
     protected void InvokeCombatCompleted()
 	{
-		OnCombatCompleted.Invoke(this, ECombatResult.SUCCESS);
+		if (OnCombatCompleted != null) OnCombatCompleted.Invoke(this, ECombatResult.SUCCESS);
 	}
 	protected void InvokeCombatFailed()
 	{
-		OnCombatCompleted.Invoke(this, ECombatResult.FAILURE);
+		if (OnCombatCompleted != null) OnCombatCompleted.Invoke(this, ECombatResult.FAILURE);
 	}
 
 	// Start is called before the first frame update
