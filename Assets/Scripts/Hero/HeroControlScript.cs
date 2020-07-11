@@ -23,19 +23,19 @@ public class HeroControlScript : MonoBehaviour
         switch (InputMove)
         {
             case EPlayerMoves.UP:
-                MovementComponent.DoMove (new Vector2(0, 1));
+                MovementComponent.AttemptMovement(new Vector2(0, 1));
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.RIGHT:
-                MovementComponent.DoMove(new Vector2(1, 0));
+                MovementComponent.AttemptMovement(new Vector2(1, 0));
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.LEFT:
-                MovementComponent.DoMove(new Vector2(-1, 0));
+                MovementComponent.AttemptMovement(new Vector2(-1, 0));
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.DOWN:
-                MovementComponent.DoMove(new Vector2(0, -1));
+                MovementComponent.AttemptMovement(new Vector2(0, -1));
                 return EMoveResult.SUCCESS;
                 break;
 
