@@ -16,7 +16,10 @@ public enum EPlayerMoves
     SWORD,
     SHEATHE,
     CANCEL,
-    ERROR
+    ERROR,
+
+    //
+    NONE
 }
 public enum EMoveResult
 {

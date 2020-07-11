@@ -45,6 +45,9 @@ public class Test_DirectHeroControl : MonoBehaviour
         {
             HeroControl.ProcessMoveEnum(EPlayerMoves.WAIT);
         }
-
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            HeroControl.ProcessNextQueuedMove();
+        }
     }
 }
