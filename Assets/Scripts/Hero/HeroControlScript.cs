@@ -101,6 +101,7 @@ public class HeroControlScript : MonoBehaviour
     public void AddMoveToQueue(EPlayerMoves NewMove)
     {
         MoveQueue.Add(NewMove);
+        Debug.Log("added move to queue " + NewMove.ToString());
         if (OnMoveQueueUpdated != null) OnMoveQueueUpdated.Invoke(this);
     }
 
@@ -109,6 +110,7 @@ public class HeroControlScript : MonoBehaviour
         if (MoveQueue.Count > 0)
         {
             MoveQueue.RemoveAt(MoveQueue.Count - 1);
+            Debug.Log("Removing last queued move.  new count is " + MoveQueue.Count.ToString());
         }
         if (OnMoveQueueUpdated != null) OnMoveQueueUpdated.Invoke(this);
     }
