@@ -9,8 +9,10 @@ public class GridMovementComponent : MonoBehaviour
     public delegate void MoveResultDelegate(GridMovementComponent source, EMoveResult result);
 
     public MoveResultDelegate OnMoveCompleted;
+
+	public GameObject DustEffectPrefab;
     
-    public EMoveResult AttemptMovement(Vector2 Direction)
+    public EMoveResult AttemptMovement(Vector2 Direction, bool FlipX)
     {
         if (IsDirectionOccupied(Direction))
         {
@@ -19,16 +21,20 @@ public class GridMovementComponent : MonoBehaviour
         }
         else
         {
-            DoMove(Direction);
+            DoMove(Direction, FlipX);
             return EMoveResult.SUCCESS;
         }
     }
 
-    public void DoMove(Vector2 Direction)
+    public void DoMove(Vector2 Direction, bool FlipX)
     {
         Vector2 Movepoint = new Vector2(transform.position.x, transform.position.y) + Direction;
         this.transform.DOMove(Movepoint, MoveTime).SetEase(Ease.OutExpo).OnComplete(InvokeMoveCompleted);
-    }
+
+		var effectObject = Instantiate(DustEffectPrefab, transform.position, Quaternion.identity) as GameObject;
+		var OSE = effectObject.GetComponent<OneShotEffect>();
+		OSE.EffectRenderer.flipX = FlipX;
+	}
 
 	public void DoBounceMove(Vector2 Direction)
 	{

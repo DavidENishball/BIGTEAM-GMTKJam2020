@@ -93,27 +93,27 @@ public class HeroControlScript : MonoBehaviour
             case EPlayerMoves.UP:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
 				LastDirection = new Vector2(0, 1);
-				MovementComponent.AttemptMovement(LastDirection);
+				MovementComponent.AttemptMovement(LastDirection, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.RIGHT:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
 				HeroRenderer.flipX = false;
 				LastDirection = new Vector2(1, 0);
-				MovementComponent.AttemptMovement(LastDirection);
+				MovementComponent.AttemptMovement(LastDirection, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.LEFT:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
 				HeroRenderer.flipX = true;
 				LastDirection = new Vector2(-1, 0);
-				MovementComponent.AttemptMovement(LastDirection);
+				MovementComponent.AttemptMovement(LastDirection, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.DOWN:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
 				LastDirection = new Vector2(0, -1);
-                MovementComponent.AttemptMovement(LastDirection);
+                MovementComponent.AttemptMovement(LastDirection, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.WAIT:

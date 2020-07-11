@@ -38,20 +38,12 @@ public class OneShotEffect : MonoBehaviour
 		Destroy(this.gameObject, lifetime);
 	}
 
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 	private void OnDestroy()
 	{
-		OnCompletCallback();
+		if (OnCompletCallback != null)
+		{
+			OnCompletCallback();
+		}
 	}
 }

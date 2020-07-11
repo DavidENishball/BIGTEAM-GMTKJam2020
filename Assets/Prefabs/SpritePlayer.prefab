@@ -123,6 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveTime: 0.12
+  DustEffectPrefab: {fileID: 7482501132005440168, guid: 7c8fc8b8a344d8940a58465b9c13de06,
+    type: 3}
 --- !u!114 &1740826032
 MonoBehaviour:
   m_ObjectHideFlags: 0
