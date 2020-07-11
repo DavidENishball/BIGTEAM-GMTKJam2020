@@ -14,6 +14,7 @@ public class GridMovementComponent : MonoBehaviour
     {
         if (IsDirectionOccupied(Direction))
         {
+            OnMoveCompleted.Invoke(this, EMoveResult.FAILURE);
             return EMoveResult.FAILURE;
         }
         else

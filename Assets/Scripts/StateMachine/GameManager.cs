@@ -18,13 +18,13 @@ public class GameManager : MonoBehaviour
             Hero = FindObjectOfType<HeroControlScript>();
         }
 
-        stateMachine.ChangeState(new State_ExecutingMoves(this));
+        stateMachine.ChangeState(new State_PlanPlayerMoves(this));
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        
+        stateMachine.Update();
     }
 }

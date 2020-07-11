@@ -10,6 +10,8 @@ public class HeroControlScript : MonoBehaviour
 
     public HeroControlScriptMoveResultDelegate OnMoveCompleted;
 
+    public HeroControlScriptDelegate OnMoveQueueUpdated;
+
     protected EPlayerMoves MoveInProgress = EPlayerMoves.NONE;
 
     public GridMovementComponent MovementComponent;
@@ -71,6 +73,21 @@ public class HeroControlScript : MonoBehaviour
                 MovementComponent.AttemptMovement(new Vector2(0, -1));
                 return EMoveResult.SUCCESS;
                 break;
+            case EPlayerMoves.WAIT:
+                MoveInProgress = EPlayerMoves.NONE;
+                OnMoveCompleted.Invoke(this, EPlayerMoves.WAIT, EMoveResult.NEUTRAL);
+                return EMoveResult.NEUTRAL;
+                break;
+            case EPlayerMoves.SWORD:
+                MoveInProgress = EPlayerMoves.NONE;
+                OnMoveCompleted.Invoke(this, EPlayerMoves.SWORD, EMoveResult.NEUTRAL);
+                return EMoveResult.NEUTRAL;
+                break;
+            case EPlayerMoves.SHEATHE:
+                MoveInProgress = EPlayerMoves.NONE;
+                OnMoveCompleted.Invoke(this, EPlayerMoves.SHEATHE, EMoveResult.NEUTRAL);
+                return EMoveResult.NEUTRAL;
+                break;
 
             default:
                 Debug.LogError("Could not process move " + InputMove.ToString());
@@ -81,7 +98,20 @@ public class HeroControlScript : MonoBehaviour
         return EMoveResult.NEUTRAL;
     }
 
+    public void AddMoveToQueue(EPlayerMoves NewMove)
+    {
+        MoveQueue.Add(NewMove);
+        if (OnMoveQueueUpdated != null) OnMoveQueueUpdated.Invoke(this);
+    }
 
+    public void RemoveLastQueuedMove()
+    {
+        if (MoveQueue.Count > 0)
+        {
+            MoveQueue.RemoveAt(MoveQueue.Count - 1);
+        }
+        if (OnMoveQueueUpdated != null) OnMoveQueueUpdated.Invoke(this);
+    }
 
 
     public void HandleMovementComponentDone(GridMovementComponent source, EMoveResult result)

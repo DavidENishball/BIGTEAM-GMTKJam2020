@@ -50,7 +50,17 @@ public class Test_DirectHeroControl : MonoBehaviour
         //else
         if (Input.GetKeyDown(KeyCode.B))
         {
-            HeroControl.ProcessNextQueuedMove();
+            GameManager manager = FindObjectOfType<GameManager>();
+
+            if (manager.stateMachine.GetState() is State_PlanPlayerMoves)
+            {
+                manager.stateMachine.ChangeState(new State_ExecutingMoves(manager));
+            }
+            else
+            {
+                HeroControl.ProcessNextQueuedMove();
+            }
         }
+
     }
 }

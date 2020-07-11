@@ -10,7 +10,7 @@ public class State_ExecutingMoves : IState
 
     public void Enter()
     {
-
+        Debug.Log("Entering State_ExecutingMoves");
         runningCoroutine = owner.StartCoroutine(ExecutionPhase());
         // TODO: play end animation.
     }
@@ -42,6 +42,7 @@ public class State_ExecutingMoves : IState
             }
         }
         //  CHANGE TO SOMETHING ELSE owner.stateMachine.ChangeState();
+        owner.stateMachine.ChangeState(new State_PlanPlayerMoves(owner));
     }
 
     public void Update()
@@ -51,6 +52,8 @@ public class State_ExecutingMoves : IState
 
     public void Exit()
     {
+        owner.StopCoroutine(runningCoroutine);
+        runningCoroutine = null;
         owner.Hero.MoveQueue.Clear();
     }
 }

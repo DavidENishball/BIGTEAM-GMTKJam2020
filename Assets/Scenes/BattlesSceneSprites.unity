@@ -1427,6 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ca633b7b6a3124db608ddc7557ace0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hero: {fileID: 1740826033}
 --- !u!4 &1500751908
 Transform:
   m_ObjectHideFlags: 0
@@ -1486,7 +1487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementComponent: {fileID: 1740826031}
-  MoveQueue: 01000000010000000200000003000000
+  MoveQueue: 020000000200000002000000
 --- !u!1001 &3794748452599246567
 PrefabInstance:
   m_ObjectHideFlags: 0
