@@ -87,7 +87,8 @@ public class GridCombatComponent : MonoBehaviour
         foreach (Collider2D iteratedCollider in AllHits)
         {
             BattleTarget FoundTarget = iteratedCollider.GetComponent<BattleTarget>();
-            if (FoundTarget != null)
+            
+            if (FoundTarget != null && BattleTargetComponent.IsHostile(FoundTarget))
             {
                 Output.Add(FoundTarget);
             }

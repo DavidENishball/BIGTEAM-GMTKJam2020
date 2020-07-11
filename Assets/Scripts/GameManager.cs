@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public GameManagerDelegate OnRoundStart;
     public GameManagerDelegate OnRoundEnd;
 
+    public float PlanningTimeForPlayer = 4.0f;
+
     // Start is called before the first frame update
     void Start()
     {

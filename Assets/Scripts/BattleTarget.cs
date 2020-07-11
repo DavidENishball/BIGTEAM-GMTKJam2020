@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class BattleTarget : MonoBehaviour
 {
+    public enum EBattleTeam
+    {
+        HERO,
+        NINJA
+    }
     public Vector2 CurrentFacing = new Vector2(0, 1);
     public int HitsUntilDeath = 1;
     public GameObject TempDeathEffectPrefab;
+
+    public EBattleTeam Team = EBattleTeam.NINJA;
     public bool IsDead()
     {
         return HitsUntilDeath <= 0;
+    }
+
+    public bool IsHostile(BattleTarget other)
+    {
+        return other.Team != this.Team;
     }
 
     // Start is called before the first frame update
