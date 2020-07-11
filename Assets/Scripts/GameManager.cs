@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 // A class for controlling game state.
 public class GameManager : MonoBehaviour
@@ -9,6 +10,11 @@ public class GameManager : MonoBehaviour
 	public ActionBar ActionUI;
 
     public StateMachine stateMachine = new StateMachine();
+
+    public delegate void GameManagerDelegate(GameManager source);
+
+    public GameManagerDelegate OnRoundStart;
+    public GameManagerDelegate OnRoundEnd;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +32,7 @@ public class GameManager : MonoBehaviour
 		ActionUI.Init(Hero);
 
 
-		stateMachine.ChangeState(new State_PlanPlayerMoves(this));
+		stateMachine.ChangeState(new State_RoundStart(this));
     }
 
 
@@ -34,5 +40,20 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         stateMachine.Update();
+    }
+
+    public bool IsLevelComplete()
+    {
+        HashSet<BattleTarget> targetSet = new HashSet<BattleTarget>(FindObjectsOfType<BattleTarget>());
+
+        // Ignore player
+        targetSet.Remove(Hero.GetComponent<BattleTarget>());
+
+        // Linq magic.
+        int LivingTargets = targetSet.Where(x => x.enabled && x.IsDead() == false).Count();
+
+        return LivingTargets <= 0;
+
+
     }
 }

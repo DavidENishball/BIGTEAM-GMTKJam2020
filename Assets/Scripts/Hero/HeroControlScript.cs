@@ -16,8 +16,11 @@ public class HeroControlScript : MonoBehaviour
 	public HeroControlScriptDelegate OnQueueCleared;
 	public HeroControlScriptDelegate OnActionQueuePlay;
 
+   	private SpriteRenderer m_heroRenderer;
 
-	private SpriteRenderer m_heroRenderer;
+    public BattleTarget BattleTargetComponent;
+
+
 	public SpriteRenderer HeroRenderer
 	{
 		get
@@ -41,8 +44,6 @@ public class HeroControlScript : MonoBehaviour
 		}
 	}
 
-	protected Vector2 LastDirection = new Vector2(1, 0);
-
 	protected EPlayerMoves MoveInProgress = EPlayerMoves.NONE;
 
     public GridMovementComponent MovementComponent;
@@ -59,6 +60,10 @@ public class HeroControlScript : MonoBehaviour
 		{
 			CombatComponent = gameObject.GetComponent<GridCombatComponent>();
 		}
+        if (BattleTargetComponent == null)
+        {
+            BattleTargetComponent = gameObject.GetComponent<BattleTarget>();
+        }
 	}
     public List<EPlayerMoves> MoveQueue = new List<EPlayerMoves>();
 
@@ -92,28 +97,28 @@ public class HeroControlScript : MonoBehaviour
         {
             case EPlayerMoves.UP:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
-				LastDirection = new Vector2(0, 1);
-				MovementComponent.AttemptMovement(LastDirection, HeroRenderer.flipX);
+				BattleTargetComponent.CurrentFacing = new Vector2(0, 1);
+				MovementComponent.AttemptMovement(BattleTargetComponent.CurrentFacing, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.RIGHT:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
 				HeroRenderer.flipX = false;
-				LastDirection = new Vector2(1, 0);
-				MovementComponent.AttemptMovement(LastDirection, HeroRenderer.flipX);
+				BattleTargetComponent.CurrentFacing = new Vector2(1, 0);
+				MovementComponent.AttemptMovement(BattleTargetComponent.CurrentFacing, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.LEFT:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
 				HeroRenderer.flipX = true;
-				LastDirection = new Vector2(-1, 0);
-				MovementComponent.AttemptMovement(LastDirection, HeroRenderer.flipX);
+				BattleTargetComponent.CurrentFacing = new Vector2(-1, 0);
+				MovementComponent.AttemptMovement(BattleTargetComponent.CurrentFacing, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.DOWN:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
-				LastDirection = new Vector2(0, -1);
-                MovementComponent.AttemptMovement(LastDirection, HeroRenderer.flipX);
+				BattleTargetComponent.CurrentFacing = new Vector2(0, -1);
+                MovementComponent.AttemptMovement(BattleTargetComponent.CurrentFacing, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.WAIT:
@@ -123,7 +128,7 @@ public class HeroControlScript : MonoBehaviour
                 break;
             case EPlayerMoves.SWORD:
 				CombatComponent.OnCombatCompleted += HandleCombatComponentDone;
-				CombatComponent.AttemptCombat(LastDirection, HeroRenderer.flipX);
+				CombatComponent.AttemptCombat(BattleTargetComponent.CurrentFacing, HeroRenderer.flipX);
                 return EMoveResult.NEUTRAL;
                 break;
             case EPlayerMoves.SHEATHE:

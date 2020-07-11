@@ -44,7 +44,7 @@ public class State_ExecutingMoves : IState
             }
         }
         //  CHANGE TO SOMETHING ELSE owner.stateMachine.ChangeState();
-        owner.stateMachine.ChangeState(new State_PlanPlayerMoves(owner));
+        owner.stateMachine.ChangeState(new State_RoundEnd(owner));
     }
 
     public void Update()
@@ -54,8 +54,11 @@ public class State_ExecutingMoves : IState
 
     public void Exit()
     {
-        owner.StopCoroutine(runningCoroutine);
-        runningCoroutine = null;
+        if (runningCoroutine != null)
+        {
+            owner.StopCoroutine(runningCoroutine);
+            runningCoroutine = null;
+        }
 		owner.Hero.ClearQueue();
     }
 }

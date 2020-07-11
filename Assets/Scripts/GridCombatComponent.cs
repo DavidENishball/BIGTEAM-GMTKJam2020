@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class GridCombatComponent : MonoBehaviour
 {
+    public BattleTarget BattleTargetComponent;
+
 	public float MoveTime = 0.3f;
 	public delegate void GridCombatComponentDelegate(GridCombatComponent source);
 	public delegate void CombatResultDelegate(GridCombatComponent source, ECombatResult result);
@@ -15,15 +17,27 @@ public class GridCombatComponent : MonoBehaviour
 
 	public ECombatResult AttemptCombat(Vector2 Direction, bool FlipX)
 	{
-		if (IsDirectionOccupied(Direction))
+        List<BattleTarget> FoundTargets = GetBattleTargetsInDirection(Direction);
+
+        if (FoundTargets.Count > 0)
+        {
+            foreach (BattleTarget foundTarget in FoundTargets)
+            {
+                foundTarget.TakeHit(BattleTargetComponent);
+            }
+            //DID DAMAGE??
+            DoSlash(Direction, FlipX);
+            return ECombatResult.SUCCESS;
+        }
+        else if (IsDirectionOccupied(Direction))
 		{
-			//DID DAMAGE??
-			DoSlash(Direction, FlipX);
-			return ECombatResult.SUCCESS;
+            // Hit a solid, indestructable object.
+            DoSlash(Direction, FlipX);
+            return ECombatResult.FAILURE;
 		}
 		else
 		{
-			//whiff???
+			// Hit nothing.
 			DoSlash(Direction, FlipX);
 			return ECombatResult.FAILURE;
 		}
@@ -64,7 +78,25 @@ public class GridCombatComponent : MonoBehaviour
 		return false;
 	}
 
-	protected void InvokeCombatCompleted()
+    public List<BattleTarget> GetBattleTargetsInDirection(Vector2 Direction)
+    {
+        Vector3 Movepoint = transform.position + new Vector3(Direction.x, Direction.y);
+
+        Collider2D[] AllHits = Physics2D.OverlapCircleAll(Movepoint, 0.4f);
+        List<BattleTarget> Output = new List<BattleTarget>();
+        foreach (Collider2D iteratedCollider in AllHits)
+        {
+            BattleTarget FoundTarget = iteratedCollider.GetComponent<BattleTarget>();
+            if (FoundTarget != null)
+            {
+                Output.Add(FoundTarget);
+            }
+        }
+
+        return Output;
+    }
+
+    protected void InvokeCombatCompleted()
 	{
 		OnCombatCompleted.Invoke(this, ECombatResult.SUCCESS);
 	}
@@ -76,8 +108,8 @@ public class GridCombatComponent : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-
-	}
+        BattleTargetComponent = GetComponent<BattleTarget>();
+    }
 
 	// Update is called once per frame
 	void Update()
