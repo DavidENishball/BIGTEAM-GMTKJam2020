@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4237256041891494288}
   - component: {fileID: 4237256041891494289}
   - component: {fileID: 2991807499092824799}
+  - component: {fileID: 8270372550295787251}
   m_Layer: 0
   m_Name: NinjaSplitter
   m_TagString: Untagged
@@ -190,7 +191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelfBattleTarget: {fileID: 0}
-  ClonePrefab: {fileID: 425133323842079751}
+  ClonePrefab: {fileID: 7539656702762966163, guid: ae2a5563e0424034da7f49e806913e9c,
+    type: 3}
 --- !u!114 &2991807499092824799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,3 +209,18 @@ MonoBehaviour:
     type: 3}
   WaitTime: 0.4
   SuppressActivation: 0
+--- !u!114 &8270372550295787251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425133323842079751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1432e6f1cbbccaf40b0b891acfff106e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StunnedSprite: {fileID: 21300000, guid: 07299b29ee228a84c90081e3fc37af57, type: 3}
+  CachedOriginalSprite: {fileID: 0}
+  foundCharacter: {fileID: 0}

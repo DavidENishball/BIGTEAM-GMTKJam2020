@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class BattleTarget : MonoBehaviour
 {
     public delegate void BattleTargetDelegate(BattleTarget Source);
@@ -90,14 +90,22 @@ public class BattleTarget : MonoBehaviour
 
         // Play effects and stuff here.
         // Temp effect
+        StartCoroutine(DeathEffectsCoroutine(KillSource));
+         
+    }
 
-        Instantiate(TempDeathEffectPrefab, this.transform.position - Vector3.forward * 2, transform.rotation);
+    public IEnumerator DeathEffectsCoroutine(BattleTarget KillSource)
+    {
+        Vector3 IncomingAttackVector = this.transform.position - KillSource.transform.position;
+        IncomingAttackVector.Normalize();
 
+        // Nudge them a bit.
+        yield return transform.DOLocalMove(transform.position + IncomingAttackVector * 0.2f, 0.1f).SetEase(Ease.OutCubic);
+
+        yield return new WaitForSeconds(0.3f);
         
-
+        Instantiate(TempDeathEffectPrefab, this.transform.position - Vector3.forward * 2, transform.rotation);
         // For now, just destroy.  AXE CHANGE THIS
         Destroy(gameObject);
-
-         
     }
 }

@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 4344580486513690213}
   - component: {fileID: 4344580486513690214}
   - component: {fileID: 114428451994269534}
+  - component: {fileID: 578656981}
+  - component: {fileID: 578656980}
   m_Layer: 0
   m_Name: NinjaEnemyBase
   m_TagString: Untagged
@@ -192,3 +194,33 @@ MonoBehaviour:
     type: 3}
   WaitTime: 0.4
   SuppressActivation: 0
+--- !u!114 &578656981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539656702762966163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26ef1bc5ef7ff9941b043a7f0bea0e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitSprite: {fileID: 21300000, guid: 826b84055fcfb9d41bdccc59f45691c9, type: 3}
+  CachedOriginalSprite: {fileID: 0}
+  foundCharacter: {fileID: 0}
+--- !u!114 &578656980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539656702762966163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1432e6f1cbbccaf40b0b891acfff106e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StunnedSprite: {fileID: 21300000, guid: 826b84055fcfb9d41bdccc59f45691c9, type: 3}
+  CachedOriginalSprite: {fileID: 0}
+  foundCharacter: {fileID: 0}
