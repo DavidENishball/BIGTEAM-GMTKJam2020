@@ -10,7 +10,7 @@ public class Text_SynchronizeWithTimer : MonoBehaviour
     void Start()
     {
         manager = FindObjectOfType<GameManager>();
-        TheText = FindObjectOfType<Text>();
+        TheText = GetComponent<Text>();
     }
 
     // Update is called once per frame

@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour
 
 		ActionUI.Init(Hero);
 
-
-		stateMachine.ChangeState(new State_RoundStart(this));
+        // FIRST STATE
+		stateMachine.ChangeState(new State_LevelIntroduction(this));
     }
 
 

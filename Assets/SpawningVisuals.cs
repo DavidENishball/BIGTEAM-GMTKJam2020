@@ -17,10 +17,21 @@ public class SpawningVisuals : MonoBehaviour
         }
     }
 
+    public virtual void SetInitialSpawnAppearance()
+    {
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        if (sprite != null)
+        {
+            sprite.color = Color.clear;
+        }
+
+    }
+
 
     // AXE: subclass this class and override this function for variations.
     public virtual IEnumerator DoSpawningVisuals()
     {
+        SetInitialSpawnAppearance();
         yield return null; // Stall one frame at the start, just in case.
 
         if (DefaultSmokeEffect != null)
@@ -29,7 +40,7 @@ public class SpawningVisuals : MonoBehaviour
             var OSE = effectObject.GetComponent<OneShotEffect>();
         }
 
-
+        
         // Do a fadein
 
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
