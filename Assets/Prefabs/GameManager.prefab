@@ -473,7 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
   shakeDuration: 0
-  shakeMagnitude: 0.75
+  shakeMagnitude: 1.2
   dampingSpeed: 1
   initialPosition: {x: 0, y: 0}
 --- !u!1 &7051921874780210607
@@ -565,6 +565,7 @@ MonoBehaviour:
   LevelCompleteUI: {fileID: 7051921876165186800}
   GameOverUI: {fileID: 1454437425}
   LevelIntroductionUI: {fileID: 1348444576}
+  CamShake: {fileID: 0}
   AdvanceToThisSceneAfterLevelComplete: TitleScreen
 --- !u!114 &114272992601483846
 MonoBehaviour:
