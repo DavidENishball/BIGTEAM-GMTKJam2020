@@ -20,7 +20,7 @@ public class Text_SynchronizeWithTimer : MonoBehaviour
 
         if (CurrentState != null)
         {
-            TheText.text = CurrentState.TimeRemaining.ToString();
+            TheText.text = "TIME: "+CurrentState.TimeRemaining.ToString("f2");
         }
         else
         {

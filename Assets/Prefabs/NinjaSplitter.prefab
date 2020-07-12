@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5840977115824232178}
   - component: {fileID: 4237256041891494288}
   - component: {fileID: 4237256041891494289}
+  - component: {fileID: 2991807499092824799}
   m_Layer: 0
   m_Name: NinjaSplitter
   m_TagString: Untagged
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: d129caf527bc11a4593fd4c4d293c339, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.25464582, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0b1c3be1bdc8cd245b89a0b0cae5bf84, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,8 +102,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.3}
-    oldSize: {x: 1.8, y: 1.63}
+    pivot: {x: 0.5, y: 0.333333}
+    oldSize: {x: 1, y: 1.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -190,3 +191,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SelfBattleTarget: {fileID: 0}
   ClonePrefab: {fileID: 425133323842079751}
+--- !u!114 &2991807499092824799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425133323842079751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884bc0aabb40fae4ba5ebbdc60f3990e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultSmokeEffect: {fileID: 4729556169073739046, guid: b4eedaa0964dbff41b2d96dcc5ad7e01,
+    type: 3}
+  WaitTime: 0.4
+  SuppressActivation: 0

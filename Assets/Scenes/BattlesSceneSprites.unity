@@ -2056,28 +2056,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bf6e74d0404fbd4d9c0e61d15d890f2, type: 3}
---- !u!1 &4237256041891494287 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 425133323842079751, guid: 945e3c9f40f218a4585962acb1fc7216,
-    type: 3}
-  m_PrefabInstance: {fileID: 4551909328828249480}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4237256041891494290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4237256041891494287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 884bc0aabb40fae4ba5ebbdc60f3990e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DefaultSmokeEffect: {fileID: 7482501132005440168, guid: 7c8fc8b8a344d8940a58465b9c13de06,
-    type: 3}
-  WaitTime: 0.4
-  SuppressActivation: 0
 --- !u!1001 &4551909328828249480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2298,5 +2276,10 @@ PrefabInstance:
       propertyPath: Hero
       value: 
       objectReference: {fileID: 1740826033}
+    - target: {fileID: 7051921875051958628, guid: 6637c79ca3ce0c64284d3cd24a426f97,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6637c79ca3ce0c64284d3cd24a426f97, type: 3}

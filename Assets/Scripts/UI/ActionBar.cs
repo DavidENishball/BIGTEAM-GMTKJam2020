@@ -17,6 +17,8 @@ public class ActionBar : MonoBehaviour
 
 	public int CurrentAction = 0;
 
+	public UIShakeEffect UIShake;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -56,6 +58,7 @@ public class ActionBar : MonoBehaviour
 		{
 			ActionList[CurrentAction].SetIcon(EPlayerMoves.ERROR);
 			ActionList[CurrentAction].HighLighted = true;
+			UIShake.TriggerShake();
 		}
 		else
 		{
@@ -120,14 +123,15 @@ public class ActionBar : MonoBehaviour
 		Destroy(lastItem.gameObject);
 
 		LayoutBrackets();
+		UIShake.TriggerShake();
 	}
 
 	private void LayoutBrackets()
 	{
-		var bracketOffset = ActionList.Count * 16;
+		//var bracketOffset = ActionList.Count * 16;
 
-		LeftBracket.anchoredPosition = new Vector2(240 - bracketOffset, -248.7f);
-		RightBracket.anchoredPosition = new Vector2(240 + bracketOffset, -248.7f);
+		//LeftBracket.anchoredPosition = new Vector2(240 - bracketOffset, -248.7f);
+		//RightBracket.anchoredPosition = new Vector2(240 + bracketOffset, -248.7f);
 	}
 
 }

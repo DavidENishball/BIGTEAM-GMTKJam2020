@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 297e53cde15938c4ab8340ecaf0622bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e576731e7250ae24c8e1fc412157f045, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,8 +101,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2, y: 1.6414286}
+    pivot: {x: 0.5, y: 0.333333}
+    oldSize: {x: 1, y: 1.5}
     newSize: {x: 1.2, y: 1.6414286}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884bc0aabb40fae4ba5ebbdc60f3990e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultSmokeEffect: {fileID: 0}
+  DefaultSmokeEffect: {fileID: 4729556169073739046, guid: b4eedaa0964dbff41b2d96dcc5ad7e01,
+    type: 3}
   WaitTime: 0.4
   SuppressActivation: 0

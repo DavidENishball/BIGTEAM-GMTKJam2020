@@ -17,7 +17,7 @@ public class HeroControlScript : MonoBehaviour
 	public HeroControlScriptDelegate OnActionQueuePlay;
 
    	private SpriteRenderer m_heroRenderer;
-
+	public SpriteRenderer DirectionIndicator;
     public BattleTarget BattleTargetComponent;
 
     public int MaximumQueuedMoves = 10;
@@ -100,6 +100,7 @@ public class HeroControlScript : MonoBehaviour
             case EPlayerMoves.UP:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
 				BattleTargetComponent.CurrentFacing = new Vector2(0, 1);
+				DirectionIndicator.transform.rotation = Quaternion.AngleAxis(90, new Vector3(0, 0, 1));
 				MovementComponent.AttemptMovement(BattleTargetComponent.CurrentFacing, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
@@ -107,6 +108,7 @@ public class HeroControlScript : MonoBehaviour
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
 				HeroRenderer.flipX = false;
 				BattleTargetComponent.CurrentFacing = new Vector2(1, 0);
+				DirectionIndicator.transform.rotation = Quaternion.AngleAxis(0, new Vector3(0, 0, 1));
 				MovementComponent.AttemptMovement(BattleTargetComponent.CurrentFacing, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
@@ -114,13 +116,15 @@ public class HeroControlScript : MonoBehaviour
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
 				HeroRenderer.flipX = true;
 				BattleTargetComponent.CurrentFacing = new Vector2(-1, 0);
+				DirectionIndicator.transform.rotation = Quaternion.AngleAxis(180, new Vector3(0, 0, 1));
 				MovementComponent.AttemptMovement(BattleTargetComponent.CurrentFacing, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.DOWN:
                 MovementComponent.OnMoveCompleted += HandleMovementComponentDone;
 				BattleTargetComponent.CurrentFacing = new Vector2(0, -1);
-                MovementComponent.AttemptMovement(BattleTargetComponent.CurrentFacing, HeroRenderer.flipX);
+				DirectionIndicator.transform.rotation = Quaternion.AngleAxis(-90, new Vector3(0, 0, 1));
+				MovementComponent.AttemptMovement(BattleTargetComponent.CurrentFacing, HeroRenderer.flipX);
                 return EMoveResult.SUCCESS;
                 break;
             case EPlayerMoves.WAIT:
