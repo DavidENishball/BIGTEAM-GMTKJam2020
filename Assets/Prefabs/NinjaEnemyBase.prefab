@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4344580486513690212}
   - component: {fileID: 4344580486513690213}
   - component: {fileID: 4344580486513690214}
+  - component: {fileID: 114428451994269534}
   m_Layer: 0
   m_Name: NinjaEnemyBase
   m_TagString: Untagged
@@ -122,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4aa4b00adf5f945b66340c7788191a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsStunned: 0
   CurrentFacing: {x: -1, y: 0}
   HitsUntilDeath: 1
   TempDeathEffectPrefab: {fileID: 100006, guid: 4b57b4dcec81f0b48b72a53af275d9d7,
@@ -174,3 +176,18 @@ MonoBehaviour:
   MoveTime: 0.1
   DustEffectPrefab: {fileID: 7482501132005440168, guid: 7c8fc8b8a344d8940a58465b9c13de06,
     type: 3}
+--- !u!114 &114428451994269534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539656702762966163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884bc0aabb40fae4ba5ebbdc60f3990e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultSmokeEffect: {fileID: 0}
+  WaitTime: 0.4
+  SuppressActivation: 0

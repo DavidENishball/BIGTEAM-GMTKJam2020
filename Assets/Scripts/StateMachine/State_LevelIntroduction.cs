@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-public class State_RoundStart : IState
+public class State_LevelIntroduction : IState
 {
     GameManager owner;
-    Coroutine runningCoroutine;
-    public State_RoundStart(GameManager owner) { this.owner = owner; }
+
+    public State_LevelIntroduction(GameManager owner) { this.owner = owner; }
 
     public List<EnemyBehaviorScript> RunningEnemyBehaviors;
 
