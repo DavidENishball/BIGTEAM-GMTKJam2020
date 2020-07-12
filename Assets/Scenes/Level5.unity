@@ -2544,6 +2544,11 @@ PrefabInstance:
       propertyPath: CamShake
       value: 
       objectReference: {fileID: 1271126756}
+    - target: {fileID: 7051921874839605831, guid: 6637c79ca3ce0c64284d3cd24a426f97,
+        type: 3}
+      propertyPath: AdvanceToThisSceneAfterLevelComplete
+      value: Level6
+      objectReference: {fileID: 0}
     - target: {fileID: 7051921875051958628, guid: 6637c79ca3ce0c64284d3cd24a426f97,
         type: 3}
       propertyPath: m_LocalPosition.z
