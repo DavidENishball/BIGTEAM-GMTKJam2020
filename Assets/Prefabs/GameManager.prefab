@@ -155,9 +155,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Retry
-
-'
+  m_Text: Press Space to Retry
 --- !u!1 &1348444576
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +282,7 @@ GameObject:
   - component: {fileID: 1454437429}
   - component: {fileID: 1454437428}
   - component: {fileID: 1454437427}
+  - component: {fileID: 8821466434005249326}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
@@ -386,6 +385,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8821466434005249326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454437425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df24d1b880389f64aa2a0a9998bff82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7051921874437250949
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +546,7 @@ MonoBehaviour:
   LevelCompleteUI: {fileID: 7051921876165186800}
   GameOverUI: {fileID: 1454437425}
   LevelIntroductionUI: {fileID: 1348444576}
+  AdvanceToThisSceneAfterLevelComplete: TitleScreen
 --- !u!114 &114272992601483846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,9 +738,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Level Complete
-
-'
+  m_Text: Level Complete.  Press "Spacebar"
 --- !u!1 &7051921875605150291
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +914,7 @@ GameObject:
   - component: {fileID: 7051921876165186812}
   - component: {fileID: 7051921876165186803}
   - component: {fileID: 7051921876165186802}
+  - component: {fileID: 9204033141331248636}
   m_Layer: 5
   m_Name: LevelCompleteButton
   m_TagString: Untagged
@@ -929,7 +940,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 276.11, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7051921876165186812
 CanvasRenderer:
@@ -1006,6 +1017,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9204033141331248636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7051921876165186800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa261a3c1dbf0414abe16232073ca572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7051921876222379488
 GameObject:
   m_ObjectHideFlags: 0

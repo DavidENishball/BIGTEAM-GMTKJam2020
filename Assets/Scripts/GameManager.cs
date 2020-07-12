@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject GameOverUI;
     public GameObject LevelIntroductionUI;
 
+    public string AdvanceToThisSceneAfterLevelComplete;
+
     // Start is called before the first frame update
     void Start()
     {
