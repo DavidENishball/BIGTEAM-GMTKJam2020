@@ -62,6 +62,17 @@ public class GridMovementComponent : MonoBehaviour
         return false;
     }
 
+    public bool IsLocationOccupied(Vector2 Location)
+    {
+        Collider2D[] AllHits = Physics2D.OverlapCircleAll(Location, 0.4f);
+
+        if (AllHits.Length > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
     protected void InvokeMoveCompleted()
     {
         OnMoveCompleted.Invoke(this, EMoveResult.SUCCESS);
