@@ -14,7 +14,6 @@ public class State_RoundEnd : IState
     {
         Debug.Log("Entering State_RoundEnd");
 
-
         RunningEnemyBehaviors = MonoBehaviour.FindObjectsOfType<EnemyBehaviorScript>().Where(x => x.enabled).ToList();
         owner.StartCoroutine(ProcessAllBehaviors());
     }
@@ -33,10 +32,14 @@ public class State_RoundEnd : IState
 
         if (owner.OnRoundEnd != null) owner.OnRoundEnd.Invoke(owner);
 
-        owner.stateMachine.ChangeState(new State_RoundStart(owner));
-
-
-        yield return null;
+        if (owner.IsLevelComplete())
+        {
+            owner.stateMachine.ChangeState(new State_LevelComplete(owner));
+        }
+        else
+        {
+            owner.stateMachine.ChangeState(new State_RoundStart(owner));
+        }
     }
 
     public void Update()

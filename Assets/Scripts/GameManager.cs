@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     public int MaximumSizeOfPlayerInputQueue = 10;
 
+    public GameObject LevelCompleteUI;
+
     // Start is called before the first frame update
     void Start()
     {
