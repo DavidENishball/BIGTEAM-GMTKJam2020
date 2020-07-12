@@ -32,12 +32,13 @@ public class OneShotEffect : MonoBehaviour
 		//move the effect around a little
 		this.transform.position = transform.position + new Vector3(Random.Range(-variance, variance) * pixelSize, Random.Range(-variance, variance) * pixelSize);
 
-		EffectRenderer.DOColor(new Color(1f, 1f, 1f, 0f), lifetime).SetEase(Ease.InQuad);
-
-		//fire and forget
-		Destroy(this.gameObject, lifetime);
+		EffectRenderer.DOColor(new Color(1f, 1f, 1f, 0f), lifetime).SetEase(Ease.InQuad).OnComplete(DestroyEffect);
 	}
 
+	protected void DestroyEffect()
+	{
+		Destroy(this.gameObject);
+	}
 
 	private void OnDestroy()
 	{
