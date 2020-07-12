@@ -14,7 +14,7 @@ public class ChangeSpritewhenStunned : MonoBehaviour
     public BattleTarget foundCharacter;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         cachedRenderer = GetComponent<SpriteRenderer>();
         CachedOriginalSprite = cachedRenderer.sprite;
