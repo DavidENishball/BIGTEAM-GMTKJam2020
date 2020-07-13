@@ -27,10 +27,21 @@ public class State_RoundStart : IState
             EnemyBehaviorScript NewScript = RunningEnemyBehaviors[0];
             if (NewScript != null)
             {
-                yield return NewScript.StartCoroutine(NewScript.StartOfRoundBehavior());
+                // Kludge: Skip dead enemies.
+                if (NewScript.GetComponent<BattleTarget>().enabled)
+                {
+                    Debug.Log("Starting RoundStart script for unit " + NewScript.gameObject.name);
+                    // Target is being destroyed while coroutine is running.
+                    Coroutine NewCoroutine = NewScript.StartCoroutine(NewScript.StartOfRoundBehavior());
+                    yield return NewCoroutine;
+                }
+                else
+                {
+                    Debug.Log("Skipping unit " + NewScript.gameObject.name + " because it is marked dead");
+                }
             }
-
-            RunningEnemyBehaviors.Remove(NewScript);
+            RunningEnemyBehaviors.RemoveAt(0);
+            Debug.Log("Remaining behaviors: " + RunningEnemyBehaviors.Count);
         }
 
         // KLUDGE!~  Don't change state if this isn't the current state.

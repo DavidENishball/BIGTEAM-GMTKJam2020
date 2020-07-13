@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 578656981}
   - component: {fileID: 578656980}
   m_Layer: 0
-  m_Name: NinjaEnemyBase
+  m_Name: NinjaEnemySmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: e576731e7250ae24c8e1fc412157f045, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5728f8ac3f05c7f4ea0a44b0df6f25a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ef1bc5ef7ff9941b043a7f0bea0e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitSprite: {fileID: 21300000, guid: 826b84055fcfb9d41bdccc59f45691c9, type: 3}
+  HitSprite: {fileID: 21300000, guid: 497761dc10542c042962fbeedfe0d8e8, type: 3}
   CachedOriginalSprite: {fileID: 0}
   foundCharacter: {fileID: 0}
 --- !u!114 &578656980
@@ -221,6 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1432e6f1cbbccaf40b0b891acfff106e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StunnedSprite: {fileID: 21300000, guid: 826b84055fcfb9d41bdccc59f45691c9, type: 3}
+  StunnedSprite: {fileID: 21300000, guid: 497761dc10542c042962fbeedfe0d8e8, type: 3}
   CachedOriginalSprite: {fileID: 0}
   foundCharacter: {fileID: 0}

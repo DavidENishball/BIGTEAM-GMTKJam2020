@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 471865529915858332}
   - component: {fileID: 471865529915858335}
   - component: {fileID: 4235472567619345403}
+  - component: {fileID: 416655131}
+  - component: {fileID: 416655132}
   m_Layer: 0
   m_Name: NinjaDuplicator
   m_TagString: Untagged
@@ -175,4 +177,36 @@ MonoBehaviour:
   BattleTargetComponent: {fileID: 0}
   GridMovement: {fileID: 0}
   GridCombat: {fileID: 0}
-  ClonePrefab: {fileID: 5937246306455553898}
+  ClonePrefab: {fileID: 7539656702762966163, guid: 3779d603a03f57c459cea6a0019c35d8,
+    type: 3}
+--- !u!114 &416655131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937246306455553898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884bc0aabb40fae4ba5ebbdc60f3990e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultSmokeEffect: {fileID: 4729556169073739046, guid: b4eedaa0964dbff41b2d96dcc5ad7e01,
+    type: 3}
+  WaitTime: 0.4
+  SuppressActivation: 0
+--- !u!114 &416655132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937246306455553898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26ef1bc5ef7ff9941b043a7f0bea0e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitSprite: {fileID: 21300000, guid: 9ded906ef0e51d24ba2f828be21e6ef6, type: 3}
+  CachedOriginalSprite: {fileID: 0}
+  foundCharacter: {fileID: 0}

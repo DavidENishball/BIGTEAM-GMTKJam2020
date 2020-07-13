@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class State_PlanPlayerMoves : IState
 {
-    GameManager owner;
+    public GameManager owner;
     Coroutine runningCoroutine;
 
     public float TimeRemaining = 999.0f;
     public bool IsTimeLimited = true;
-    public State_PlanPlayerMoves(GameManager owner) { this.owner = owner; }
+    public State_PlanPlayerMoves(GameManager argOwner) { this.owner = argOwner; }
 
     public void Enter()
     {
