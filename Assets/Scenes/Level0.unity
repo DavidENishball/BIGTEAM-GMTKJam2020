@@ -2165,11 +2165,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7051921874437250951, guid: 6637c79ca3ce0c64284d3cd24a426f97,
-        type: 3}
-      propertyPath: UIShake
-      value: 
-      objectReference: {fileID: 7051921875499006566}
     - target: {fileID: 7051921874839605824, guid: 6637c79ca3ce0c64284d3cd24a426f97,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2255,21 +2250,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 80
       objectReference: {fileID: 0}
-    - target: {fileID: 7051921875669966283, guid: 6637c79ca3ce0c64284d3cd24a426f97,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 140
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051921875669966283, guid: 6637c79ca3ce0c64284d3cd24a426f97,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 116.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 7051921875669966283, guid: 6637c79ca3ce0c64284d3cd24a426f97,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 90
-      objectReference: {fileID: 0}
     - target: {fileID: 7051921875669966293, guid: 6637c79ca3ce0c64284d3cd24a426f97,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -2328,26 +2308,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6637c79ca3ce0c64284d3cd24a426f97, type: 3}
---- !u!1 &7051921875499006565 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7051921874437250949, guid: 6637c79ca3ce0c64284d3cd24a426f97,
-    type: 3}
-  m_PrefabInstance: {fileID: 7051921875499006564}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7051921875499006566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7051921875499006565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 773558418a4b86747911382a39c790c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transform: {fileID: 0}
-  shakeDuration: 0
-  shakeMagnitude: 0.75
-  dampingSpeed: 1
-  initialPosition: {x: 0, y: 0}
