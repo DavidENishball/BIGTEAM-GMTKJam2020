@@ -565,7 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transform: {fileID: 0}
   shakeDuration: 0
-  shakeMagnitude: 0.75
+  shakeMagnitude: 1.2
   dampingSpeed: 1
   initialPosition: {x: 0, y: 0}
 --- !u!114 &7051921875499006566
